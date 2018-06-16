@@ -12,7 +12,18 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-variable "project_name" {}
-variable "billing_account" {}
-variable "organisation_id" {}
-variable "region" {}
+variable "project_name" {
+  description = "the name of the project"
+}
+
+variable "billing_account" {
+  description = "the billing_account to which the project should be attached to"
+}
+
+variable "organisation_id" {
+  description = "the id of the organisation in which the project should be created"
+}
+
+variable "region" {
+  description = "the region in which sub-resources should be created"
+}
