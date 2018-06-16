@@ -13,7 +13,7 @@
 #   limitations under the License.
 
 resource "random_id" "google_project_id" {
-  byte_length = 4
+  byte_length = 15
   prefix      = "${random_pet.prefix.id}-"
 }
 
