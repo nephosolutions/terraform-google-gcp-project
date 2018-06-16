@@ -13,19 +13,22 @@
 #   limitations under the License.
 
 resource "random_id" "google_project_id" {
- byte_length = 15
+  byte_length = 4
+  prefix      = "${random_pet.prefix.id}-"
 }
 
+resource "random_pet" "prefix" {}
+
 resource "google_project" "project" {
- name            = "${var.project_name}"
- project_id      = "${random_id.google_project_id.hex}"
- billing_account = "${var.billing_account}"
- org_id          = "${var.organisation_id}"
+  name            = "${var.project_name}"
+  project_id      = "${substr(lower(random_id.google_project_id.hex),0,30)}"
+  billing_account = "${var.billing_account}"
+  org_id          = "${var.organisation_id}"
 }
 
 resource "google_project_services" "project" {
- project = "${google_project.project.project_id}"
- services = [
-   "compute.googleapis.com"
- ]
+  project = "${google_project.project.project_id}"
+  services = [
+    "compute.googleapis.com"
+  ]
 }
