@@ -30,7 +30,3 @@ resource "google_project_services" "project" {
    "compute.googleapis.com"
  ]
 }
-
-output "project_id" {
- value = "${google_project.project.project_id}"
-}
