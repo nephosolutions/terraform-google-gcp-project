@@ -7,7 +7,7 @@ This terraform module provisions a Google Cloud Platform project
 ```hcl
 module "gcp-project" {
   source  = "nephosolutions/gcp-project/google"
-  version = "0.1.2"
+  version = "0.1.3"
 
   billing_account = "..."
   organisation_id = "..."
@@ -23,7 +23,6 @@ module "gcp-project" {
 | billing_account | the billing_account to which the project should be attached to | string | - | yes |
 | organisation_id | the id of the organisation in which the project should be created | string | - | yes |
 | project_name | the name of the project | string | - | yes |
-| region | the region in which sub-resources should be created | string | - | yes |
 
 ## Outputs
 

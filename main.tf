@@ -13,8 +13,7 @@
 #   limitations under the License.
 
 resource "random_id" "google_project_id" {
- byte_length = 4
- prefix      = "${var.project_name}-"
+ byte_length = 15
 }
 
 resource "google_project" "project" {

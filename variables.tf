@@ -23,7 +23,3 @@ variable "billing_account" {
 variable "organisation_id" {
   description = "the id of the organisation in which the project should be created"
 }
-
-variable "region" {
-  description = "the region in which sub-resources should be created"
-}
