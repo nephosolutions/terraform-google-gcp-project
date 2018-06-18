@@ -12,8 +12,10 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-variable "project_name" {
-  description = "the name of the project"
+variable "api_services" {
+  description = "list of Google APIs to activate on this project"
+  default     = []
+  type        = "list"
 }
 
 variable "billing_account" {
@@ -22,4 +24,8 @@ variable "billing_account" {
 
 variable "organisation_id" {
   description = "the id of the organisation in which the project should be created"
+}
+
+variable "project_name" {
+  description = "the name of the project"
 }

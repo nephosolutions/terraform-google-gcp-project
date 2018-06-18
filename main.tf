@@ -12,12 +12,12 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+resource "random_pet" "prefix" {}
+
 resource "random_id" "google_project_id" {
   byte_length = 4
   prefix      = "${random_pet.prefix.id}-"
 }
-
-resource "random_pet" "prefix" {}
 
 resource "google_project" "project" {
   name            = "${var.project_name}"
@@ -26,9 +26,11 @@ resource "google_project" "project" {
   org_id          = "${var.organisation_id}"
 }
 
+locals {
+  api_services = ["oslogin.googleapis.com"]
+}
+
 resource "google_project_services" "project" {
-  project = "${google_project.project.project_id}"
-  services = [
-    "compute.googleapis.com"
-  ]
+  project   = "${google_project.project.project_id}"
+  services  = ["${concat(local.api_services, var.api_services)}"]
 }
