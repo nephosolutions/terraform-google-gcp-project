@@ -7,7 +7,7 @@ This terraform module provisions a Google Cloud Platform project
 ```hcl
 module "gcp_project" {
   source  = "nephosolutions/gcp-project/google"
-  version = "0.1.7"
+  version = "0.1.8"
 
   billing_account = "..."
   organisation_id = "..."

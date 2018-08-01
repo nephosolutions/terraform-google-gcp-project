@@ -26,11 +26,7 @@ resource "google_project" "project" {
   org_id          = "${var.organisation_id}"
 }
 
-locals {
-  api_services = ["oslogin.googleapis.com"]
-}
-
 resource "google_project_services" "project" {
   project   = "${google_project.project.project_id}"
-  services  = ["${concat(local.api_services, var.api_services)}"]
+  services  = ["${var.api_services}"]
 }
