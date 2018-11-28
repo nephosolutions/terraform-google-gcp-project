@@ -22,6 +22,16 @@ variable "billing_account" {
   description = "the billing_account to which the project should be attached to"
 }
 
+variable "default_region" {
+  description = "The region used by default to create new resources"
+  default = ""
+}
+
+variable "default_zone" {
+  description = "The zone within a region used by default to create new resources"
+  default = ""
+}
+
 variable "organisation_id" {
   description = "the id of the organisation in which the project should be created"
 }
