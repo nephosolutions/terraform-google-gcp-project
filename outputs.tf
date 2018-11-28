@@ -19,5 +19,5 @@ output "project_id" {
 
 output "project_services" {
   description = "a list of enabled project services"
-  value       = ["${google_project_services.project.services.*}"]
+  value       = ["${google_project_services.project.services}"]
 }
