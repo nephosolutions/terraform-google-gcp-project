@@ -26,9 +26,13 @@ resource "google_project" "project" {
   org_id          = "${var.organisation_id}"
 }
 
-resource "google_project_services" "project" {
-  project   = "${google_project.project.project_id}"
-  services  = ["${var.api_services}"]
+resource "google_project_service" "selected" {
+  count = "${length(local.seletced_api_services)}"
+
+  project = "${google_project.project.project_id}"
+  service = "${element(local.seletced_api_services, count.index)}"
+
+  disable_dependent_services = true
 }
 
 resource "google_compute_project_metadata_item" "default_region" {
