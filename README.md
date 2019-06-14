@@ -15,11 +15,16 @@ provider "random" {
 
 module "gcp_project" {
   source  = "nephosolutions/gcp-project/google"
-  version = "~> 1.0.0"
+  version = "~> 1.1.0"
 
   billing_account = "..."
   organisation_id = "..."
   project_name    = "..."
+
+  ssh_users = {
+    foo = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLm..."
+    bar = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLn..."
+  }
 }
 ```
 
@@ -33,6 +38,7 @@ module "gcp_project" {
 | default\_zone | The zone within a region used by default to create new resources | string | `""` | no |
 | organisation\_id | the id of the organisation in which the project should be created | string | n/a | yes |
 | project\_name | the name of the project | string | n/a | yes |
+| ssh\_users | a map of user:ssk_key pairs | map | `<map>` | no |
 
 ## Outputs
 

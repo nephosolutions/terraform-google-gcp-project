@@ -1,4 +1,4 @@
-#   Copyright 2018 NephoSolutions SPRL, Sebastian Trebitz
+#   Copyright 2019 NephoSolutions SPRL, Sebastian Trebitz
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -49,4 +49,18 @@ resource "google_compute_project_metadata_item" "default_zone" {
   project = "${google_project.project.project_id}"
   key     = "google-compute-default-zone"
   value   = "${var.default_zone}"
+}
+
+module "metadata_ssh_keys" {
+  source = "modules/metadata-ssh-keys"
+
+  ssh_users = "${var.ssh_users}"
+}
+
+resource "google_compute_project_metadata_item" "ssh_keys" {
+  count = "${module.metadata_ssh_keys.mapping == "" ? 0 : 1}"
+
+  project = "${google_project.project.project_id}"
+  key     = "ssh-keys"
+  value   = "${module.metadata_ssh_keys.mapping}"
 }

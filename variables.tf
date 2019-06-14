@@ -1,4 +1,4 @@
-#   Copyright 2018 NephoSolutions SPRL, Sebastian Trebitz
+#   Copyright 2019 NephoSolutions SPRL, Sebastian Trebitz
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -45,4 +45,10 @@ variable "organisation_id" {
 
 variable "project_name" {
   description = "the name of the project"
+}
+
+variable "ssh_users" {
+  description = "a map of user:ssk_key pairs"
+  default     = {}
+  type        = "map"
 }

@@ -2,20 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
 ## [Unreleased]
+
+## [1.1.0] - 2019-06-14
+
+- Add SSH key management for project metadata; the metadata-ssh-keys submodule can be used independently -  e.g. manage ssh-key metadata on instance level
 
 ## [1.0.0] - 2019-06-13
 
-### Added
-
-- A list of project service APIs which will be enabled by default for resource types managed within this module
-
-### Changed
-
-- The GCP project service APIs to enable are now managed as individual resources.
+- Added a list of project service APIs which will be enabled by default for resource types managed within this module
+- The GCP project service APIs to enable are now managed as individual resources
 
 __Attention:__ If you upgrade from version 0.x.y you have to clean your Terraform state manually
 
@@ -23,7 +19,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.2.1...v1.0.0
 [0.2.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.8...v0.2.0

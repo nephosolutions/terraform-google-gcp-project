@@ -12,16 +12,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-output "project_id" {
-  description = "the id of the project"
-  value       = "${google_project.project.project_id}"
-}
-
-data "google_project_services" "enabled" {
-  project     = "${google_project.project.project_id}"
-}
-
-output "project_services" {
-  description = "a list of enabled project services"
-  value       = ["${sort(data.google_project_services.enabled.services)}"]
+variable "ssh_users" {
+  description = "a map of user:ssk_key pairs"
+  type        = "map"
 }
