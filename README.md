@@ -38,6 +38,7 @@ __Attention:__ Enabled Google project API services won't get disabled, if remove
 | billing\_account | the billing_account to which the project should be attached to | string | n/a | yes |
 | default\_region | The region used by default to create new resources | string | `""` | no |
 | default\_zone | The zone within a region used by default to create new resources | string | `""` | no |
+| enable\_oslogin | Use Cloud OS Login API to manage OS login configuration for Google account users | string | `"false"` | no |
 | organisation\_id | the id of the organisation in which the project should be created | string | n/a | yes |
 | project\_name | the name of the project | string | n/a | yes |
 | ssh\_users | a map of user:ssk_key pairs | map | `<map>` | no |

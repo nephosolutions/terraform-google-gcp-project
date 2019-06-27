@@ -32,6 +32,11 @@ variable "default_zone" {
   default     = ""
 }
 
+variable "enable_oslogin" {
+  description = "Use Cloud OS Login API to manage OS login configuration for Google account users"
+  default = false
+}
+
 variable "organisation_id" {
   description = "the id of the organisation in which the project should be created"
 }

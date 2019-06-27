@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ## [2.0.0] - 2019-06-28
 
 - Partially revert manage GCP project service APIs as individual resources
+- Add a possibility to enable OS login configuration for Google account users on project level
 
 __Attention:__ If you upgrade from version:
 

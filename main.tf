@@ -64,6 +64,12 @@ module "metadata_ssh_keys" {
   ssh_users = "${var.ssh_users}"
 }
 
+resource "google_compute_project_metadata_item" "enable_oslogin" {
+  project = "${google_project.project.project_id}"
+  key     = "enable-oslogin"
+  value   = "${contains(local.seletced_api_services, "oslogin.googleapis.com") && var.enable_oslogin ? "TRUE" : "FALSE"}"
+}
+
 resource "google_compute_project_metadata_item" "ssh_keys" {
   count = "${module.metadata_ssh_keys.mapping == "" ? 0 : 1}"
 
