@@ -17,10 +17,6 @@ output "project_id" {
   value       = "${google_project.project.project_id}"
 }
 
-data "google_project_services" "enabled" {
-  project     = "${google_project.project.project_id}"
-}
-
 output "project_services" {
   description = "a list of enabled project services"
   value       = ["${sort(data.google_project_services.enabled.services)}"]

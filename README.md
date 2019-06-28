@@ -28,6 +28,8 @@ module "gcp_project" {
 }
 ```
 
+__Attention:__ Enabled Google project API services won't get disabled, if removed from the configuration.
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |

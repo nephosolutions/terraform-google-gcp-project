@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-06-28
+
+- Partially revert manage GCP project service APIs as individual resources
+
+__Attention:__ If you upgrade from version:
+
+- 1.x.y you have to clean your Terraform state manually
+- 0.x.y you should be good to go
+
+```sh
+terraform state rm module.gcp_project.google_project_service.selected
+```
+
 ## [1.1.0] - 2019-06-14
 
 - Add SSH key management for project metadata; the metadata-ssh-keys submodule can be used independently -  e.g. manage ssh-key metadata on instance level
@@ -19,7 +32,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.2.1...v1.0.0
 [0.2.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.2.0...v0.2.1

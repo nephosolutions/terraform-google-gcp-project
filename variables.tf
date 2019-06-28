@@ -12,13 +12,6 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-locals {
-  required_api_services = [
-    "serviceusage.googleapis.com",
-  ]
-  seletced_api_services = "${distinct(concat(local.required_api_services, var.api_services))}"
-}
-
 variable "api_services" {
   description = "list of Google APIs to activate on this project"
   default     = []

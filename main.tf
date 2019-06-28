@@ -26,13 +26,20 @@ resource "google_project" "project" {
   org_id          = "${var.organisation_id}"
 }
 
-resource "google_project_service" "selected" {
-  count = "${length(local.seletced_api_services)}"
+data "google_project_services" "enabled" {
+  project     = "${google_project.project.project_id}"
+}
 
-  project = "${google_project.project.project_id}"
-  service = "${element(local.seletced_api_services, count.index)}"
+locals {
+  required_api_services = [
+    "serviceusage.googleapis.com",
+  ]
+  seletced_api_services = "${sort(distinct(concat(local.required_api_services, var.api_services, data.google_project_services.enabled.services)))}"
+}
 
-  disable_dependent_services = true
+resource "google_project_services" "enabled" {
+  project   = "${google_project.project.project_id}"
+  services  = ["${local.seletced_api_services}"]
 }
 
 resource "google_compute_project_metadata_item" "default_region" {
