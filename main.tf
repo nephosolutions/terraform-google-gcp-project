@@ -12,7 +12,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-resource "random_pet" "prefix" {}
+resource "random_pet" "prefix" {
+}
 
 resource "random_id" "google_project_id" {
   byte_length = 4
@@ -20,60 +21,66 @@ resource "random_id" "google_project_id" {
 }
 
 resource "google_project" "project" {
-  name            = "${var.project_name}"
-  project_id      = "${lower(random_id.google_project_id.hex)}"
-  billing_account = "${var.billing_account}"
-  org_id          = "${var.organisation_id}"
+  name            = var.project_name
+  project_id      = lower(random_id.google_project_id.hex)
+  billing_account = var.billing_account
+  org_id          = var.organisation_id
 }
 
 data "google_project_services" "enabled" {
-  project     = "${google_project.project.project_id}"
+  project = google_project.project.project_id
 }
 
 locals {
   required_api_services = [
     "serviceusage.googleapis.com",
   ]
-  seletced_api_services = "${sort(distinct(concat(local.required_api_services, var.api_services, data.google_project_services.enabled.services)))}"
+  seletced_api_services = distinct(
+    concat(
+      sort(local.required_api_services),
+      sort(var.api_services),
+      sort(data.google_project_services.enabled.services),
+    ),
+  )
 }
 
 resource "google_project_services" "enabled" {
-  project   = "${google_project.project.project_id}"
-  services  = ["${local.seletced_api_services}"]
+  project   = google_project.project.project_id
+  services  = local.seletced_api_services
 }
 
 resource "google_compute_project_metadata_item" "default_region" {
-  count = "${var.default_region == "" ? 0 : 1}"
+  count = var.default_region == "" ? 0 : 1
 
-  project = "${google_project.project.project_id}"
+  project = google_project.project.project_id
   key     = "google-compute-default-region"
-  value   = "${var.default_region}"
+  value   = var.default_region
 }
 
 resource "google_compute_project_metadata_item" "default_zone" {
-  count = "${var.default_zone == "" ? 0 : 1}"
+  count = var.default_zone == "" ? 0 : 1
 
-  project = "${google_project.project.project_id}"
+  project = google_project.project.project_id
   key     = "google-compute-default-zone"
-  value   = "${var.default_zone}"
+  value   = var.default_zone
 }
 
 module "metadata_ssh_keys" {
-  source = "modules/metadata-ssh-keys"
+  source = "./modules/metadata-ssh-keys"
 
-  ssh_users = "${var.ssh_users}"
+  ssh_users = var.ssh_users
 }
 
 resource "google_compute_project_metadata_item" "enable_oslogin" {
-  project = "${google_project.project.project_id}"
+  project = google_project.project.project_id
   key     = "enable-oslogin"
-  value   = "${contains(local.seletced_api_services, "oslogin.googleapis.com") && var.enable_oslogin ? "TRUE" : "FALSE"}"
+  value   = contains(local.seletced_api_services, "oslogin.googleapis.com") && var.enable_oslogin ? "TRUE" : "FALSE"
 }
 
 resource "google_compute_project_metadata_item" "ssh_keys" {
-  count = "${module.metadata_ssh_keys.mapping == "" ? 0 : 1}"
+  count = length(keys(var.ssh_users))
 
-  project = "${google_project.project.project_id}"
+  project = google_project.project.project_id
   key     = "ssh-keys"
-  value   = "${module.metadata_ssh_keys.mapping}"
+  value   = module.metadata_ssh_keys.mapping
 }

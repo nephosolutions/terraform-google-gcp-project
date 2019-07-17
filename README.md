@@ -5,17 +5,9 @@ This terraform module provisions a Google Cloud Platform project
 ## Usage
 
 ```hcl
-provider "google" {
-  version = "~> 2.0"
-}
-
-provider "random" {
-  version = "~> 2.0"
-}
-
 module "gcp_project" {
   source  = "nephosolutions/gcp-project/google"
-  version = "~> 1.1.0"
+  version = "~> 3.0.0"
 
   billing_account = "..."
   organisation_id = "..."

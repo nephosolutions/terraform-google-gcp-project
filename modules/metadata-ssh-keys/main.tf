@@ -13,11 +13,12 @@
 #   limitations under the License.
 
 data "template_file" "mapping" {
-  count    = "${length(keys(var.ssh_users))}"
+  count    = length(keys(var.ssh_users))
   template = "$${user}:$${key}"
 
-  vars {
-    user = "${element(keys(var.ssh_users), count.index)}"
-    key  = "${lookup(var.ssh_users, element(keys(var.ssh_users), count.index))}"
+  vars = {
+    user = element(keys(var.ssh_users), count.index)
+    key  = var.ssh_users[element(keys(var.ssh_users), count.index)]
   }
 }
+

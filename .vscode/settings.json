@@ -1,0 +1,8 @@
+{
+  "search.useGlobalIgnoreFiles": true,
+  "terraform.indexing": {
+    "enabled": false,
+    "liveIndexing": false,
+    "exclude": ["**/*"]
+  }
+}

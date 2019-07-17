@@ -15,7 +15,7 @@
 variable "api_services" {
   description = "list of Google APIs to activate on this project"
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "billing_account" {
@@ -34,7 +34,7 @@ variable "default_zone" {
 
 variable "enable_oslogin" {
   description = "Use Cloud OS Login API to manage OS login configuration for Google account users"
-  default = false
+  default     = false
 }
 
 variable "organisation_id" {
@@ -48,5 +48,6 @@ variable "project_name" {
 variable "ssh_users" {
   description = "a map of user:ssk_key pairs"
   default     = {}
-  type        = "map"
+  type        = map(string)
 }
+

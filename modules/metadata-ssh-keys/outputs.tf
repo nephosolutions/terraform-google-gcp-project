@@ -14,5 +14,6 @@
 
 output "mapping" {
   description = "string of user:ssh_key pairs; one per line"
-  value       = "${join("\n", data.template_file.mapping.*.rendered)}"
+  value       = join("\n", data.template_file.mapping.*.rendered)
 }
+
