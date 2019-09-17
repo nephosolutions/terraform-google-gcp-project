@@ -18,6 +18,11 @@ variable "api_services" {
   type        = list(string)
 }
 
+variable "auto_create_network" {
+  description = "Create the 'default' network automatically."
+  default     = true
+}
+
 variable "billing_account" {
   description = "the billing_account to which the project should be attached to"
 }
@@ -37,8 +42,13 @@ variable "enable_oslogin" {
   default     = false
 }
 
-variable "organisation_id" {
-  description = "the id of the organisation in which the project should be created"
+variable "folder_id" {
+  description = "The numeric ID of the folder this project should be created under."
+  default     = ""
+}
+
+variable "org_id" {
+  description = "The numeric ID of the organization this project belongs to."
 }
 
 variable "project_name" {
@@ -51,3 +61,7 @@ variable "ssh_users" {
   type        = map(string)
 }
 
+variable "skip_delete" {
+  description = "If true, the Terraform resource can be deleted without deleting the Project via the Google API."
+  default     = false
+}

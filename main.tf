@@ -21,10 +21,15 @@ resource "random_id" "google_project_id" {
 }
 
 resource "google_project" "project" {
-  name            = var.project_name
+  name = var.project_name
+  
   project_id      = lower(random_id.google_project_id.hex)
+  org_id          = var.folder_id == "" ? var.org_id : null
+  folder_id       = var.folder_id != "" ? var.folder_id : null
   billing_account = var.billing_account
-  org_id          = var.organisation_id
+  skip_delete     = var.skip_delete
+  
+  auto_create_network = var.auto_create_network
 }
 
 data "google_project_services" "enabled" {
