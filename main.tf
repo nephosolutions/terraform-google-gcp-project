@@ -38,6 +38,8 @@ data "google_project_services" "enabled" {
 
 locals {
   required_api_services = [
+    "cloudresourcemanager.googleapis.com",
+    "compute.googleapis.com",
     "serviceusage.googleapis.com",
   ]
   seletced_api_services = distinct(
@@ -52,10 +54,13 @@ locals {
 resource "google_project_services" "enabled" {
   project   = google_project.project.project_id
   services  = local.seletced_api_services
+  
+  disable_on_destroy = false
 }
 
 resource "google_compute_project_metadata_item" "default_region" {
-  count = var.default_region == "" ? 0 : 1
+  count      = var.default_region == "" ? 0 : 1
+  depends_on = [google_project_services.enabled]
 
   project = google_project.project.project_id
   key     = "google-compute-default-region"
@@ -63,7 +68,8 @@ resource "google_compute_project_metadata_item" "default_region" {
 }
 
 resource "google_compute_project_metadata_item" "default_zone" {
-  count = var.default_zone == "" ? 0 : 1
+  count      = var.default_zone == "" ? 0 : 1
+  depends_on = [google_project_services.enabled]
 
   project = google_project.project.project_id
   key     = "google-compute-default-zone"
@@ -77,13 +83,16 @@ module "metadata_ssh_keys" {
 }
 
 resource "google_compute_project_metadata_item" "enable_oslogin" {
+  depends_on = [google_project_services.enabled]
+
   project = google_project.project.project_id
   key     = "enable-oslogin"
   value   = contains(local.seletced_api_services, "oslogin.googleapis.com") && var.enable_oslogin ? "TRUE" : "FALSE"
 }
 
 resource "google_compute_project_metadata_item" "ssh_keys" {
-  count = length(keys(var.ssh_users))
+  count      = length(keys(var.ssh_users))
+  depends_on = [google_project_services.enabled]
 
   project = google_project.project.project_id
   key     = "ssh-keys"
