@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [4.0.1] - 2019-09-17
+
+- Enable `cloudbilling.googleapis.com` by default - required to attach a billing account
+
 ## [4.0.0] - 2019-09-17
 
 - Enable additionally required service APIs and depend on them
@@ -42,7 +46,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.0.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.0.1...HEAD
+[4.0.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v3.0.0...v4.0.1
 [4.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v3.0.0...v4.0.0
 [3.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.1.0...v2.0.0

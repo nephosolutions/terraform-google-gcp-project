@@ -38,6 +38,7 @@ data "google_project_services" "enabled" {
 
 locals {
   required_api_services = [
+    "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
     "serviceusage.googleapis.com",
