@@ -15,15 +15,17 @@ module "metadata_ssh_keys" {
   }
 }
 ```
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| users | a map of user:ssk_key pairs | map | n/a | yes |
+| ssh\_users | a map of user:ssk_key pairs | map(string) | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | mapping | string of user:ssh_key pairs; one per line |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
