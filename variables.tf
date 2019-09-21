@@ -47,6 +47,12 @@ variable "folder_id" {
   default     = ""
 }
 
+variable "iam_bindings" {
+  description = "Updates the IAM policy to grant a role to a list of members. Authoritative for a given role. Other roles within the IAM policy for the project are preserved."
+  default     = {}
+  type        = map(list(string))
+}
+
 variable "org_id" {
   description = "The numeric ID of the organization this project belongs to."
 }

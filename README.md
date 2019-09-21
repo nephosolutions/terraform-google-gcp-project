@@ -34,6 +34,7 @@ __Attention:__ Enabled Google project API services won't get disabled, if remove
 | default\_zone | The zone within a region used by default to create new resources | string | `""` | no |
 | enable\_oslogin | Use Cloud OS Login API to manage OS login configuration for Google account users | string | `"false"` | no |
 | folder\_id | The numeric ID of the folder this project should be created under. | string | `""` | no |
+| iam\_bindings | Updates the IAM policy to grant a role to a list of members. Authoritative for a given role. Other roles within the IAM policy for the project are preserved. | map(list(string)) | `{}` | no |
 | org\_id | The numeric ID of the organization this project belongs to. | string | n/a | yes |
 | project\_name | the name of the project | string | n/a | yes |
 | skip\_delete | If true, the Terraform resource can be deleted without deleting the Project via the Google API. | string | `"false"` | no |

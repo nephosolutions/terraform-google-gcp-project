@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [4.0.1] - 2019-09-17
+## [4.1.0] - 2019-09-21
+
+- Add the ability to define authoritative IAM bindings
+
+## [4.0.1] - 2019-09-20
 
 - Enable `cloudbilling.googleapis.com` by default - required to attach a billing account
 
@@ -46,7 +50,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.0.1...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.1.0...HEAD
+[4.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.0.1...v4.1.0
 [4.0.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v3.0.0...v4.0.1
 [4.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v3.0.0...v4.0.0
 [3.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v2.0.0...v3.0.0

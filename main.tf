@@ -52,6 +52,13 @@ locals {
   )
 }
 
+resource "google_project_iam_binding" "authoritative" {
+  for_each = var.iam_bindings
+  project  = google_project.project.project_id
+  role     = each.key
+  members  = each.value
+}
+
 resource "google_project_services" "enabled" {
   project  = google_project.project.project_id
   services = local.seletced_api_services
