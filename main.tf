@@ -56,7 +56,7 @@ resource "google_project_iam_binding" "authoritative" {
   for_each = var.iam_bindings
   project  = google_project.project.project_id
   role     = each.key
-  members  = each.value
+  members  = distinct(compact(each.value))
 }
 
 resource "google_project_services" "enabled" {
