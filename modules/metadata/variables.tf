@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-data "template_file" "mapping" {
-  count    = length(keys(var.ssh_users))
-  template = "$${user}:$${key}"
+variable "metadata" {
+  description = ""
+  type        = map(string)
+}
 
-  vars = {
-    user = element(keys(var.ssh_users), count.index)
-    key  = var.ssh_users[element(keys(var.ssh_users), count.index)]
-  }
+variable "project_id" {
+  description = "The Google project ID for which you want to enable APIs"
 }

@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-output "mapping" {
-  description = "string of user:ssh_key pairs; one per line"
-  value       = join("\n", data.template_file.mapping.*.rendered)
+data "template_file" "mapping" {
+  for_each = var.ssh_users
+  template = "$${user}:$${key}"
+
+  vars = {
+    user = each.key
+    key  = each.value
+  }
 }

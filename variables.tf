@@ -12,12 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-variable "api_services" {
-  description = "list of Google APIs to activate on this project"
-  default     = []
-  type        = list(string)
-}
-
 variable "auto_create_network" {
   description = "Create the 'default' network automatically."
   default     = true
@@ -29,12 +23,10 @@ variable "billing_account" {
 
 variable "default_region" {
   description = "The region used by default to create new resources"
-  default     = ""
 }
 
 variable "default_zone" {
   description = "The zone within a region used by default to create new resources"
-  default     = ""
 }
 
 variable "enable_oslogin" {
@@ -59,6 +51,12 @@ variable "org_id" {
 
 variable "project_name" {
   description = "the name of the project"
+}
+
+variable "project_services" {
+  description = "A list of Google APIs to activate on this project"
+  default     = []
+  type        = list(string)
 }
 
 variable "ssh_users" {

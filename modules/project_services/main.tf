@@ -12,10 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-terraform {
-  required_providers {
-    google = ">= 2.10"
-    random = ">= 2.0"
-  }
-  required_version = ">= 0.12.6"
+resource "google_project_service" "managed" {
+  for_each = toset(var.project_services)
+
+  project = var.project_id
+  service = each.value
+
+  disable_on_destroy         = var.disable_on_destroy
+  disable_dependent_services = var.disable_dependent_services
 }

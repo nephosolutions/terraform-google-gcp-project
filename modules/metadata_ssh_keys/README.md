@@ -1,13 +1,13 @@
-# Google Cloud Platform project Terraform module
+# Google Compute Engine metadata SSH keys Terraform module
 
-This terraform module provisions a Google Cloud Storage bucket. The real bucket name is suffixed with the google project_id.
+This Terraform module maps user:ssk\_key pairs to a string.
 
 ## Usage
 
 ```hcl
 module "metadata_ssh_keys" {
-  source  = "nephosolutions/gcp-project/google//modules//metadata-ssh-keys"
-  version = "~> 1.1.0"
+  source  = "nephosolutions/gcp-project/google//modules//metadata_ssh_keys"
+  version = "~> 5.0.0"
 
   ssh_users = {
     foo = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLm..."
@@ -16,6 +16,12 @@ module "metadata_ssh_keys" {
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.6 |
+
 ## Providers
 
 | Name | Version |
@@ -25,8 +31,8 @@ module "metadata_ssh_keys" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| ssh\_users | a map of user:ssk\_key pairs | `map(string)` | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| ssh\_users | a map of `user:ssk_key` pairs | `map(string)` | n/a | yes |
 
 ## Outputs
 

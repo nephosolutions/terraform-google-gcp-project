@@ -16,8 +16,3 @@ output "project_id" {
   description = "the id of the project"
   value       = google_project.project.project_id
 }
-
-output "project_services" {
-  description = "a list of enabled project services"
-  value       = [sort(data.google_project_services.enabled.services)]
-}

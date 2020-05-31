@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.0] - 2020-05-31
+
+- Split into submodules
+- Refactor management of GCP project services
+
 ## [4.1.1] - 2019-10-10
 
 - Bug fix: deduplicate and remove empty list items from `iam_bindings[each.value]`
