@@ -1,4 +1,4 @@
-# Copyright 2019 NephoSolutions SPRL, Sebastian Trebitz
+# Copyright 2020 NephoSolutions SRL, Sebastian Trebitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-variable "ssh_users" {
-  description = "a map of user:ssk_key pairs"
-  type        = map(string)
+output "mapping" {
+  description = "string of user:ssh_key pairs; one per line"
+  value       = join("\n", [for v in data.template_file.mapping : v.rendered])
 }

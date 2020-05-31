@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-terraform {
-  required_providers {
-    google = ">= 2.10"
-    random = ">= 2.0"
-  }
-  required_version = ">= 0.12.6"
+resource "google_compute_project_metadata_item" "managed" {
+  for_each = var.metadata
+
+  project = var.project_id
+  key     = each.key
+  value   = each.value
 }

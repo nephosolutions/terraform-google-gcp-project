@@ -1,4 +1,4 @@
-# Copyright 2019 NephoSolutions SPRL, Sebastian Trebitz
+# Copyright 2020 NephoSolutions SRL, Sebastian Trebitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
 # limitations under the License.
 
 data "template_file" "mapping" {
-  count    = length(keys(var.ssh_users))
+  for_each = var.ssh_users
   template = "$${user}:$${key}"
 
   vars = {
-    user = element(keys(var.ssh_users), count.index)
-    key  = var.ssh_users[element(keys(var.ssh_users), count.index)]
+    user = each.key
+    key  = each.value
   }
 }

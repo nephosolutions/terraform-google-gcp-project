@@ -1,4 +1,4 @@
-# Copyright 2019 NephoSolutions SPRL, Sebastian Trebitz
+# Copyright 2020 NephoSolutions SRL, Sebastian Trebitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-output "mapping" {
-  description = "string of user:ssh_key pairs; one per line"
-  value       = join("\n", data.template_file.mapping.*.rendered)
+variable "metadata" {
+  description = ""
+  type        = map(string)
+}
+
+variable "project_id" {
+  description = "The Google project ID for which you want to enable APIs"
 }

@@ -1,4 +1,4 @@
-# Copyright 2019 NephoSolutions SPRL, Sebastian Trebitz
+# Copyright 2020 NephoSolutions SRL, Sebastian Trebitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,9 +15,4 @@
 output "project_id" {
   description = "the id of the project"
   value       = google_project.project.project_id
-}
-
-output "project_services" {
-  description = "a list of enabled project services"
-  value       = [sort(data.google_project_services.enabled.services)]
 }
