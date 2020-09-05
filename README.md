@@ -49,6 +49,7 @@ module "gcp_project" {
 | billing\_account | the billing\_account to which the project should be attached to | `any` | n/a | yes |
 | default\_region | The region used by default to create new resources | `any` | n/a | yes |
 | default\_zone | The zone within a region used by default to create new resources | `any` | n/a | yes |
+| enable\_osconfig | Use Cloud OS Config API to manage the operating systems that are running on your Virtual Machine (VM) instances | `bool` | `false` | no |
 | enable\_oslogin | Use Cloud OS Login API to manage OS login configuration for Google account users | `bool` | `false` | no |
 | folder\_id | The numeric ID of the folder this project should be created under. | `string` | `""` | no |
 | iam\_bindings | Updates the IAM policy to grant a role to a list of members. Authoritative for a given role. Other roles within the IAM policy for the project are preserved. | `map(list(string))` | `{}` | no |

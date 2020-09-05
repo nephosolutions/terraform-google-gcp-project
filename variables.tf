@@ -29,6 +29,11 @@ variable "default_zone" {
   description = "The zone within a region used by default to create new resources"
 }
 
+variable "enable_osconfig" {
+  description = "Use Cloud OS Config API to manage the operating systems that are running on your Virtual Machine (VM) instances"
+  default     = false
+}
+
 variable "enable_oslogin" {
   description = "Use Cloud OS Login API to manage OS login configuration for Google account users"
   default     = false

@@ -69,7 +69,8 @@ module "metadata" {
   project_id = google_project.project.project_id
 
   metadata = {
-    "enable-oslogin" = contains(local.project_services, "oslogin.googleapis.com") && var.enable_oslogin ? "TRUE" : "FALSE"
+    "enable-osconfig" = contains(local.project_services, "osconfig.googleapis.com") && var.enable_osconfig ? "TRUE" : "FALSE"
+    "enable-oslogin"  = contains(local.project_services, "oslogin.googleapis.com") && var.enable_oslogin ? "TRUE" : "FALSE"
 
     "google-compute-default-region" = var.default_region
     "google-compute-default-zone"   = var.default_zone
