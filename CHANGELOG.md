@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [5.1.1] - 2020-09-05
+
+- Configure remaining OS Config service matadata keys
+
 ## [5.1.0] - 2020-09-05
 
 - Manage the Google OS Config service
@@ -63,7 +67,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.1.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.1.1...HEAD
+[5.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.1.1...v5.0.0
 [4.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.1.0...v4.1.1
