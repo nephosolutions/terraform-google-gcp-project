@@ -1,4 +1,4 @@
-# Copyright 2020 NephoSolutions SRL, Sebastian Trebitz
+# Copyright 2018-2020, 2022 NephoSolutions srl, Sebastian Trebitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-terraform {
-  required_version = ">= 0.12.6"
+output "mapping" {
+  description = "string of user:ssh_key pairs; one per line"
+  value       = join("\n", [for v in data.template_file.mapping : v.rendered])
 }
