@@ -3,8 +3,12 @@
 This terraform module provisions a Google Cloud Platform project.
 It ships the following submodules:
 
+* [audit_config](modules/audit_config)
+* [iam_bindings](modules/iam_bindings)
+* [iam_memberships](modules/iam_memberships)
 * [metadata](modules/metadata)
 * [metadata_ssh_keys](modules/metadata/modules/metadata_ssh_keys)
+* [project](modules/project)
 * [project_services](modules/project_services)
 
 ## Usage
@@ -15,13 +19,11 @@ module "gcp_project" {
   version = "~> 6.0.0"
 
   billing_account = "..."
+  default_region  = "europe-west1"
+  default_zone    = "europe-west1-b"
+  labels          = {}
   org_id          = "..."
-  project_name    = "..."
-
-  ssh_users = {
-    foo = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLm..."
-    bar = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLn..."
-  }
+  project_name    = "My GCP Project"
 }
 ```
 
