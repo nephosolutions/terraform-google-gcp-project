@@ -1,4 +1,4 @@
-# Copyright 2020 NephoSolutions SRL, Sebastian Trebitz
+# Copyright 2018-2020, 2022 NephoSolutions srl, Sebastian Trebitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,6 @@
 # limitations under the License.
 
 output "project_id" {
-  description = "the id of the project"
-  value       = google_project.project.project_id
+  description = "The Google Cloud Platform project ID"
+  value       = module.project.project_id
 }

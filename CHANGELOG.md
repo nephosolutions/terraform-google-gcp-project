@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [6.0.0] - 2022-11-19
+
+Major code refactoring release; please check impact on deployed resources carefully when upgrading from a previous
+version.
+
+- Split project resources into submodule
+- Split `google_project` resource into two different ones, one for projects attached to the org, another for project in
+  folders
+- Add support for IAM audit configuration policies
+- Add support for IAM binding for basic IAM roles
+- Add support for IAM memberships for predefined or custom roles
+- Refactor GCP project metadata submodule to configure individual metadata items
+
+
 ## [5.1.1] - 2020-09-05
 
 - Configure remaining OS Config service matadata keys
@@ -67,26 +81,27 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.1.1...HEAD
-[5.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.1.0...v5.1.1
-[5.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v5.0.0...v5.1.0
-[5.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.1.1...v5.0.0
-[4.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.1.0...v4.1.1
-[4.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v4.0.1...v4.1.0
-[4.0.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v3.0.0...v4.0.1
-[4.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v3.0.0...v4.0.0
-[3.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v2.0.0...v3.0.0
-[2.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.1.0...v2.0.0
-[1.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.2.1...v1.0.0
-[0.2.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.8...v0.2.0
-[0.1.8]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.7...v0.1.8
-[0.1.7]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.6...v0.1.7
-[0.1.6]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.5...v0.1.6
-[0.1.5]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.4...v0.1.5
-[0.1.4]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.3...v0.1.4
-[0.1.3]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.2...v0.1.3
-[0.1.2]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.1...v0.1.2
-[0.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v0.1.0...v0.1.1
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.0.0...HEAD
+[6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.0
+[5.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.1
+[5.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.0
+[5.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.0.0
+[4.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v4.1.1
+[4.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v4.1.0
+[4.0.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v4.0.1
+[4.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v4.0.0
+[3.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v3.0.0
+[2.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v2.0.0
+[1.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v1.1.0
+[1.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v1.0.0
+[0.2.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.2.1
+[0.2.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.2.0
+[0.1.8]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.8
+[0.1.7]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.7
+[0.1.6]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.6
+[0.1.5]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.5
+[0.1.4]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.4
+[0.1.3]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.3
+[0.1.2]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.2
+[0.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.1
 [0.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v0.1.0
