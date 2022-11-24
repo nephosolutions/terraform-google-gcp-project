@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [6.0.1] - 2022-11-24
+## [6.0.2] - 2022-11-24
 
 - Fix `project_name` variable validation rules
 
@@ -84,8 +84,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.0.1...HEAD
-[6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.1
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.0.2...HEAD
+[6.0.2]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.2
 [6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.0
 [5.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.1
 [5.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.0

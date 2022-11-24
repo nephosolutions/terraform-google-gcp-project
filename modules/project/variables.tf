@@ -44,7 +44,7 @@ variable "project_name" {
   type        = string
 
   validation {
-    condition     = can(regex("^[:alnum:][[:alnum:]-_\\s]+[:alnum:]$", var.project_name))
+    condition     = can(regex("^[[:alnum:]][0-9A-Za-z-_\\s]+[[:alnum:]]$", var.project_name))
     error_message = "The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores."
   }
 
