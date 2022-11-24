@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [6.0.1] - 2022-11-24
+
+- Fix `project_name` variable validation rules
+
 ## [6.0.0] - 2022-11-19
 
 Major code refactoring release; please check impact on deployed resources carefully when upgrading from a previous
@@ -16,7 +20,6 @@ version.
 - Add support for IAM binding for basic IAM roles
 - Add support for IAM memberships for predefined or custom roles
 - Refactor GCP project metadata submodule to configure individual metadata items
-
 
 ## [5.1.1] - 2020-09-05
 
@@ -81,7 +84,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.0.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.0.1...HEAD
+[6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.1
 [6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.0
 [5.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.1
 [5.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.0

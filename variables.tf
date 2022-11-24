@@ -111,12 +111,12 @@ variable "project_name" {
   type        = string
 
   validation {
-    condition     = can(regex("^[:alnum:][[:alnum:]-_\\s]+[:alnum:]$", var.project_name))
+    condition     = can(regex("^[[:alnum:]][0-9A-Za-z-_\\s]+[[:alnum:]]$", var.project_name))
     error_message = "The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores."
   }
 
   validation {
-    condition     = length(var.project_name) < 30
+    condition     = length(var.project_name) <= 30
     error_message = "The display name can be no longer than 30 characters."
   }
 }

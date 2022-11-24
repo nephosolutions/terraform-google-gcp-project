@@ -39,7 +39,7 @@ module "gcp_project" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.43.1 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.44.1 |
 
 ## Modules
 
