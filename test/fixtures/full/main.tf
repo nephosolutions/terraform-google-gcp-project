@@ -12,18 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-data "google_compute_zones" "available" {
-  project = var.project_id
-  region  = "europe-west1"
-  status  = "UP"
-}
-
 module "gcp_project" {
   source = "../../../"
 
   billing_account = var.billing_account
-  default_region  = data.google_compute_zones.available.region
-  default_zone    = element(data.google_compute_zones.available.names, 0)
+  default_zone    = "europe-west1-b"
 
   iam_audit_config = {
     allServices = {

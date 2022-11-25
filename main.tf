@@ -73,6 +73,10 @@ module "iam_memberships" {
   members    = each.value
 }
 
+locals {
+  default_region = join("-", slice(split("-", var.default_zone), 0, 2))
+}
+
 module "metadata" {
   source     = "./modules/metadata"
   depends_on = [module.project_services]
@@ -85,7 +89,7 @@ module "metadata" {
   enable_os_login         = var.enable_os_login
   enable_os_login_2fa     = var.enable_os_login_2fa
 
-  google_compute_default_region = var.default_region
+  google_compute_default_region = local.default_region
   google_compute_default_zone   = var.default_zone
 
   ssh_users      = var.ssh_users

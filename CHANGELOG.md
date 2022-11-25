@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Configure project default region based on default zone
+
 ## [6.0.2] - 2022-11-24
 
 - Fix `project_name` variable validation rules

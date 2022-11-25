@@ -65,7 +65,6 @@ module "gcp_project" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_auto_create_network"></a> [auto\_create\_network](#input\_auto\_create\_network) | Create the 'default' network automatically. | `bool` | `false` | no |
 | <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | the billing\_account to which the project should be attached to | `string` | n/a | yes |
-| <a name="input_default_region"></a> [default\_region](#input\_default\_region) | The region used by default to create new resources | `string` | n/a | yes |
 | <a name="input_default_zone"></a> [default\_zone](#input\_default\_zone) | The zone within a region used by default to create new resources | `string` | n/a | yes |
 | <a name="input_disable_dependent_project_services"></a> [disable\_dependent\_project\_services](#input\_disable\_dependent\_project\_services) | If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed. If `false`, an error will be generated if any enabled services depend on this service when destroying it. | `bool` | `true` | no |
 | <a name="input_disable_project_services_on_destroy"></a> [disable\_project\_services\_on\_destroy](#input\_disable\_project\_services\_on\_destroy) | Disable the service when the terraform resource is destroyed. | `bool` | `true` | no |

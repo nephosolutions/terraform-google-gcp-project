@@ -21,8 +21,3 @@ variable "org_id" {
   description = "The numeric ID of the organization this project belongs to."
   type        = string
 }
-
-variable "project_id" {
-  description = "The project ID of the Google billing project for this test"
-  type        = string
-}

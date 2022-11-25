@@ -23,11 +23,6 @@ variable "billing_account" {
   type        = string
 }
 
-variable "default_region" {
-  description = "The region used by default to create new resources"
-  type        = string
-}
-
 variable "default_zone" {
   description = "The zone within a region used by default to create new resources"
   type        = string
