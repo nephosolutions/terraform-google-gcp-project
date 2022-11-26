@@ -40,7 +40,10 @@ module "gcp_project" {
   }
 
   org_id       = var.org_id
+  project_id   = random_pet.project_name.id
   project_name = random_pet.project_name.id
+
+  random_project_id_byte_length = 8
 
   ssh_users = {
     foo = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLm..."

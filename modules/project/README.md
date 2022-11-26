@@ -23,14 +23,12 @@ module "project_services" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.6 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 3.90 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_google"></a> [google](#provider\_google) | 4.44.1 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
@@ -42,8 +40,6 @@ No modules.
 |------|------|
 | [google_project.in_folder](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project) | resource |
 | [google_project.top_level](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project) | resource |
-| [random_id.project](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
-| [random_pet.name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
 | [google_project.project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/project) | data source |
 
 ## Inputs
@@ -54,8 +50,9 @@ No modules.
 | <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | the billing\_account to which the project should be attached to | `string` | n/a | yes |
 | <a name="input_folder_id"></a> [folder\_id](#input\_folder\_id) | The numeric ID of the folder this project should be created under. | `string` | `null` | no |
 | <a name="input_org_id"></a> [org\_id](#input\_org\_id) | The numeric ID of the organization this project belongs to. | `string` | n/a | yes |
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | A globally unique identifier for the project. Changing this forces a new project to be created. | `string` | n/a | yes |
 | <a name="input_project_labels"></a> [project\_labels](#input\_project\_labels) | Map of key vale pairs to set as project labels | `map(string)` | n/a | yes |
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | the name of the project | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The display name of the project. | `string` | n/a | yes |
 | <a name="input_skip_delete"></a> [skip\_delete](#input\_skip\_delete) | If true, the Terraform resource can be deleted without deleting the Project via the Google API. | `bool` | `false` | no |
 
 ## Outputs

@@ -34,12 +34,14 @@ module "gcp_project" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 3.90 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_google"></a> [google](#provider\_google) | 4.44.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
@@ -56,6 +58,7 @@ module "gcp_project" {
 
 | Name | Type |
 |------|------|
+| [random_id.project_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [google_app_engine_default_service_account.project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/app_engine_default_service_account) | data source |
 | [google_compute_default_service_account.project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_default_service_account) | data source |
 
@@ -78,8 +81,11 @@ module "gcp_project" {
 | <a name="input_iam_memberships"></a> [iam\_memberships](#input\_iam\_memberships) | Updates the IAM policy to grant a role to a list of members. | `map(list(string))` | `{}` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Map of key vale pairs to set as project labels | `map(string)` | n/a | yes |
 | <a name="input_org_id"></a> [org\_id](#input\_org\_id) | The numeric ID of the organization this project belongs to. | `string` | n/a | yes |
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | the name of the project | `string` | n/a | yes |
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | A globally unique identifier for the project. Changing this forces a new project to be created. | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The display name of the project. | `string` | n/a | yes |
 | <a name="input_project_services"></a> [project\_services](#input\_project\_services) | A list of Google APIs to activate on this project | `list(string)` | `[]` | no |
+| <a name="input_random_project_id"></a> [random\_project\_id](#input\_random\_project\_id) | Whether to use a random suffix for the `project_id`. Changing this forces a new project to be created. | `bool` | `true` | no |
+| <a name="input_random_project_id_byte_length"></a> [random\_project\_id\_byte\_length](#input\_random\_project\_id\_byte\_length) | The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness. | `number` | `4` | no |
 | <a name="input_skip_delete"></a> [skip\_delete](#input\_skip\_delete) | If true, the Terraform resource can be deleted without deleting the Project via the Google API. | `bool` | `false` | no |
 | <a name="input_ssh_users"></a> [ssh\_users](#input\_ssh\_users) | A map of user:ssk\_key pairs | `map(string)` | `{}` | no |
 | <a name="input_vm_dns_setting"></a> [vm\_dns\_setting](#input\_vm\_dns\_setting) | Enable zonal DNS and global DNS for the VMs in your project. | `string` | `"ZonalOnly"` | no |

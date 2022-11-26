@@ -19,6 +19,7 @@ module "gcp_project" {
   default_zone    = "europe-west1-b"
   labels          = {}
   org_id          = var.org_id
+  project_id      = random_pet.project_name.id
   project_name    = random_pet.project_name.id
 }
 

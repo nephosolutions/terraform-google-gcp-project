@@ -39,8 +39,23 @@ variable "project_labels" {
   type        = map(string)
 }
 
+variable "project_id" {
+  description = "A globally unique identifier for the project. Changing this forces a new project to be created."
+  type        = string
+
+  validation {
+    condition     = can(regex("^[a-z][0-9a-z-]+[0-9a-z]$", var.project_id))
+    error_message = "The project_id must start with a letter, end with a letter or digit, may contain letters, digits, and hyphens."
+  }
+
+  validation {
+    condition     = length(var.project_id) <= 30
+    error_message = "The project_id can be no longer than 30 characters."
+  }
+}
+
 variable "project_name" {
-  description = "the name of the project"
+  description = "The display name of the project."
   type        = string
 
   validation {
@@ -49,7 +64,7 @@ variable "project_name" {
   }
 
   validation {
-    condition     = length(var.project_name) < 30
+    condition     = length(var.project_name) <= 30
     error_message = "The display name can be no longer than 30 characters."
   }
 }

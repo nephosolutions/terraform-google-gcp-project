@@ -101,8 +101,23 @@ variable "org_id" {
   type        = string
 }
 
+variable "project_id" {
+  description = "A globally unique identifier for the project. Changing this forces a new project to be created."
+  type        = string
+
+  validation {
+    condition     = can(regex("^[a-z][0-9a-z-]+[0-9a-z]$", var.project_id))
+    error_message = "The project_id must start and end with a letter or digit, may contain letters, digits, and hyphens."
+  }
+
+  validation {
+    condition     = length(var.project_id) <= 30
+    error_message = "The project_id can be no longer than 30 characters."
+  }
+}
+
 variable "project_name" {
-  description = "the name of the project"
+  description = "The display name of the project."
   type        = string
 
   validation {
@@ -120,6 +135,23 @@ variable "project_services" {
   description = "A list of Google APIs to activate on this project"
   type        = list(string)
   default     = []
+}
+
+variable "random_project_id" {
+  description = "Whether to use a random suffix for the `project_id`. Changing this forces a new project to be created."
+  type        = bool
+  default     = true
+}
+
+variable "random_project_id_byte_length" {
+  description = "The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness."
+  type        = number
+  default     = 4
+
+  validation {
+    condition     = var.random_project_id_byte_length >= 1
+    error_message = "The minimum value is 1, which produces eight bits of randomness."
+  }
 }
 
 variable "ssh_users" {

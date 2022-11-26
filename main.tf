@@ -13,11 +13,13 @@
 # limitations under the License.
 
 data "google_app_engine_default_service_account" "project" {
-  project = module.project.project_id
+  depends_on = [module.project]
+  project    = module.project.project_id
 }
 
 data "google_compute_default_service_account" "project" {
-  project = module.project.project_id
+  depends_on = [module.project]
+  project    = module.project.project_id
 }
 
 module "audit_config" {
@@ -100,6 +102,13 @@ locals {
   project_labels = merge({ managed-by = "terraform" }, var.labels)
 }
 
+resource "random_id" "project_id" {
+  count = var.random_project_id ? 1 : 0
+
+  byte_length = var.random_project_id_byte_length
+  prefix      = "${substr(var.project_id, 0, 30 - var.random_project_id_byte_length)}-"
+}
+
 module "project" {
   source = "./modules/project"
 
@@ -107,6 +116,7 @@ module "project" {
   billing_account     = var.billing_account
   folder_id           = var.folder_id
   org_id              = var.org_id
+  project_id          = var.random_project_id ? substr(random_id.project_id[0].hex, 0, 30) : var.project_id
   project_labels      = local.project_labels
   project_name        = var.project_name
   skip_delete         = var.skip_delete

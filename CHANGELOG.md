@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [6.1.0] - 2022-11-26
+
 - Configure project default region based on default zone
+- User must provide `project_id`, no random prefixes will be generated
+- Add ability to disable random project_id suffix generation
 
 ## [6.0.2] - 2022-11-24
 
@@ -86,7 +90,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.0.2...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.1.0...HEAD
+[6.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.1.0
 [6.0.2]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.2
 [6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.0
 [5.1.1]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v5.1.1

@@ -24,7 +24,7 @@ resource "google_project" "in_folder" {
   folder_id           = var.folder_id
   labels              = var.project_labels
   name                = var.project_name
-  project_id          = join("-", [random_pet.name.id, random_id.project.hex])
+  project_id          = var.project_id
   skip_delete         = var.skip_delete
 }
 
@@ -36,13 +36,6 @@ resource "google_project" "top_level" {
   labels              = var.project_labels
   name                = var.project_name
   org_id              = var.org_id
-  project_id          = join("-", [random_pet.name.id, random_id.project.hex])
+  project_id          = var.project_id
   skip_delete         = var.skip_delete
-}
-
-resource "random_id" "project" {
-  byte_length = 4
-}
-
-resource "random_pet" "name" {
 }
