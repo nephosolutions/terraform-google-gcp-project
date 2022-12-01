@@ -12,16 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-data "google_app_engine_default_service_account" "project" {
-  depends_on = [module.project]
-  project    = module.project.project_id
-}
-
-data "google_compute_default_service_account" "project" {
-  depends_on = [module.project]
-  project    = module.project.project_id
-}
-
 module "audit_config" {
   source   = "./modules/audit_config"
   for_each = var.iam_audit_config
@@ -31,44 +21,39 @@ module "audit_config" {
   audit_log_config = each.value
 }
 
-locals {
-  // Google-managed service account used to access the APIs of Google Cloud Platform services.
-  google_api_service_agent = "${module.project.number}@cloudservices.gserviceaccount.com"
-}
+resource "google_project_iam_binding" "basic_role" {
+  /* There are several basic roles that existed prior to the introduction of IAM:
+      Owner, Editor, and Viewer. These roles are concentric; that is, the Owner role includes the permissions in the Editor role,
+      and the Editor role includes the permissions in the Viewer role. They were originally known as "primitive roles."
 
-/* There are several basic roles that existed prior to the introduction of IAM:
-    Owner, Editor, and Viewer. These roles are concentric; that is, the Owner role includes the permissions in the Editor role,
-    and the Editor role includes the permissions in the Viewer role. They were originally known as "primitive roles."
+     Caution:
+      Basic roles include thousands of permissions across all Google Cloud services.
+      In production environments, do not grant basic roles unless there is no alternative.
+      Instead, grant the most limited predefined roles or custom roles that meet your needs. */
 
-   Caution:
-    Basic roles include thousands of permissions across all Google Cloud services.
-    In production environments, do not grant basic roles unless there is no alternative.
-    Instead, grant the most limited predefined roles or custom roles that meet your needs. */
-module "iam_bindings" {
-  source = "./modules/iam_bindings"
+  for_each = {
+    /* All editor permissions and permissions for the following actions:
+            - Manage roles and permissions for a project and all resources within the project.
+            - Set up billing for a project. */
+    owner = var.owners
 
-  project_id = module.project.project_id
+    /* Permissions for read-only actions that do not affect state,
+        such as viewing (but not modifying) existing resources or data. */
+    viewer = var.viewers
+  }
 
-  // All viewer permissions, plus permissions for actions that modify state, such as changing existing resources.
-  editors = compact([
-    contains(local.project_services, "appengine.googleapis.com") ? "serviceAccount:${data.google_app_engine_default_service_account.project.email}" : "",
-    contains(local.project_services, "compute.googleapis.com") ? "serviceAccount:${data.google_compute_default_service_account.project.email}" : "",
-    contains(local.project_services, "compute.googleapis.com") ? "serviceAccount:${local.google_api_service_agent}" : "",
-  ])
-
-  /* All editor permissions and permissions for the following actions:
-          - Manage roles and permissions for a project and all resources within the project.
-          - Set up billing for a project. */
-  owners = []
-
-  /* Permissions for read-only actions that do not affect state,
-      such as viewing (but not modifying) existing resources or data. */
-  viewers = []
+  project = module.project.project_id
+  role    = "roles/${each.key}"
+  members = each.value
 }
 
 module "iam_memberships" {
-  source   = "./modules/iam_memberships"
-  for_each = var.iam_memberships
+  source = "./modules/iam_memberships"
+
+  for_each = merge(var.iam_memberships, {
+    // All viewer permissions, plus permissions for actions that modify state, such as changing existing resources.
+    "roles/editor" = var.editors
+  })
 
   project_id = module.project.project_id
   role       = each.key
@@ -164,9 +149,9 @@ locals {
 module "project_services" {
   source = "./modules/project_services"
 
-  project_id       = module.project.project_id
-  project_services = local.project_services
-
+  project_id                 = module.project.project_id
+  project_services           = local.project_services
+  project_service_identities = var.project_service_identities
   disable_on_destroy         = var.disable_project_services_on_destroy
   disable_dependent_services = var.disable_dependent_project_services
 }

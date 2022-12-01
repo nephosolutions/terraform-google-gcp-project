@@ -43,6 +43,13 @@ module "gcp_project" {
   project_id   = random_pet.project_name.id
   project_name = random_pet.project_name.id
 
+  project_service_identities = [
+    {
+      api   = "compute.googleapis.com"
+      roles = ["roles/editor"]
+    }
+  ]
+
   random_project_id_byte_length = 8
 
   ssh_users = {

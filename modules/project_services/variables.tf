@@ -33,3 +33,14 @@ variable "project_services" {
   description = "A list of Google APIs to activate on this project"
   type        = list(string)
 }
+
+variable "project_service_identities" {
+  description = "List of service identities to create for the project and grant IAM roles."
+
+  type = list(object({
+    api   = string
+    roles = list(string)
+  }))
+
+  default = []
+}

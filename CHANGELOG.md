@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.0.0] - 2022-12-01
+
+Refactor IAM permissions grants:
+
+- Do not use iam_binding resource except for basic IAM roles `owner` and `viewer`
+- Merge permissions grants for the basic role `editor` with iam_member resource
+- Manage permission grants for project_service_identities
+
 ## [6.1.0] - 2022-11-26
 
 - Configure project default region based on default zone
@@ -90,7 +98,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v6.1.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v7.0.0...HEAD
+[7.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v7.0.0
 [6.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.1.0
 [6.0.2]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.2
 [6.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.0

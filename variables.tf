@@ -40,6 +40,12 @@ variable "disable_dependent_project_services" {
   default     = true
 }
 
+variable "editors" {
+  description = "Identities that will be granted the basic role `editor` on the project"
+  type        = list(string)
+  default     = []
+}
+
 variable "enable_guest_attributes" {
   description = "Enable setting [guest attributes](https://cloud.google.com/compute/docs/metadata/manage-guest-attributes) for the project."
   type        = bool
@@ -101,6 +107,12 @@ variable "org_id" {
   type        = string
 }
 
+variable "owners" {
+  description = "Identities that will be granted the basic role `owner` on the project"
+  type        = list(string)
+  default     = []
+}
+
 variable "project_id" {
   description = "A globally unique identifier for the project. Changing this forces a new project to be created."
   type        = string
@@ -137,6 +149,17 @@ variable "project_services" {
   default     = []
 }
 
+variable "project_service_identities" {
+  description = "List of service identities to create for the project and grant IAM roles."
+
+  type = list(object({
+    api   = string
+    roles = list(string)
+  }))
+
+  default = []
+}
+
 variable "random_project_id" {
   description = "Whether to use a random suffix for the `project_id`. Changing this forces a new project to be created."
   type        = bool
@@ -164,6 +187,12 @@ variable "skip_delete" {
   description = "If true, the Terraform resource can be deleted without deleting the Project via the Google API."
   type        = bool
   default     = false
+}
+
+variable "viewers" {
+  description = "Identities that will be granted the basic role `viewer` on the project"
+  type        = list(string)
+  default     = []
 }
 
 variable "vm_dns_setting" {
