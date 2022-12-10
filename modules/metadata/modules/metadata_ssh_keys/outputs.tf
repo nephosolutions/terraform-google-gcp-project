@@ -14,5 +14,5 @@
 
 output "mapping" {
   description = "string of user:ssh_key pairs; one per line"
-  value       = join("\n", [for v in data.template_file.mapping : v.rendered])
+  value       = join("\n", [for v in data.template_file.mapping : chomp(v.rendered)])
 }
