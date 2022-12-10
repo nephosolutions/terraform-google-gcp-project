@@ -26,38 +26,43 @@ resource "google_compute_project_metadata_item" "disable_legacy_endpoints" {
 }
 
 resource "google_compute_project_metadata_item" "enable_guest_attributes" {
+  count   = var.enable_guest_attributes ? 1 : 0
   project = var.project_id
 
   key   = "enable-guest-attributes"
-  value = var.enable_guest_attributes ? "TRUE" : "FALSE"
+  value = "TRUE"
 }
 
 resource "google_compute_project_metadata_item" "enable_os_inventory" {
+  count   = var.enable_os_inventory ? 1 : 0
   project = var.project_id
 
   key   = "enable-os-inventory"
-  value = var.enable_os_inventory ? "TRUE" : "FALSE"
+  value = "TRUE"
 }
 
 resource "google_compute_project_metadata_item" "enable_osconfig" {
+  count   = var.enable_os_config ? 1 : 0
   project = var.project_id
 
   key   = "enable-osconfig"
-  value = var.enable_os_config ? "TRUE" : "FALSE"
+  value = "TRUE"
 }
 
 resource "google_compute_project_metadata_item" "enable_oslogin" {
+  count   = var.enable_os_login ? 1 : 0
   project = var.project_id
 
   key   = "enable-oslogin"
-  value = var.enable_os_login ? "TRUE" : "FALSE"
+  value = "TRUE"
 }
 
 resource "google_compute_project_metadata_item" "enable_oslogin_2fa" {
+  count   = var.enable_os_login_2fa ? 1 : 0
   project = var.project_id
 
   key   = "enable-oslogin-2fa"
-  value = var.enable_os_login_2fa ? "TRUE" : "FALSE"
+  value = "TRUE"
 }
 
 resource "google_compute_project_metadata_item" "google_compute_default_region" {

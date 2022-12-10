@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.1.0] - 2022-12-10
+
+- Set boolean metadata items only if enabled
+- Remove spaces or new line chars in metadata SSH keys output
+
 ## [7.0.0] - 2022-12-01
 
 Refactor IAM permissions grants:
@@ -98,7 +103,8 @@ __Attention:__ If you upgrade from version 0.x.y you have to clean your Terrafor
 terraform state rm module.gcp_project.google_project_services.project
 ```
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v7.0.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-gcp-project/compare/v7.1.0...HEAD
+[7.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v7.1.0
 [7.0.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v7.0.0
 [6.1.0]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.1.0
 [6.0.2]: https://github.com/nephosolutions/terraform-google-gcp-project/releases/tag/v6.0.2
